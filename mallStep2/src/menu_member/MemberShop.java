@@ -12,7 +12,7 @@ public class MemberShop implements MenuCommand {
 	private ItemDAO itemDAO;
 	static public String categoryName;
 	private MallController mallController;
-	
+
 	@Override
 	public void init() {
 		categoryName = null;
@@ -22,24 +22,22 @@ public class MemberShop implements MenuCommand {
 
 	@Override
 	public boolean update() {
-			
+
 		System.out.println("===[ 카테고리 ]===");
-		ArrayList<String> categoryList = itemDAO.getCategoryList();	
+		ArrayList<String> categoryList = itemDAO.getCategoryList();
 		itemDAO.printCategoryList(categoryList);
 		int categorySize = categoryList.size();
 		System.out.println("[0.쇼핑몰]");
-		int select = _Main.scan.nextInt();		
+		int select = _Main.scan.nextInt();
 		if (select == 0) {
-			mallController.setMemberLoginID("MemberMain");			
-		}
-		else if(select < 0 || select > categorySize){
+			mallController.setNextMenu("MemberMain");
+		} else if (select < 0 || select > categorySize) {
 			System.out.println("[잘못된 번호입니다]");
-			return true;	
-		}
-		else {
+			return true;
+		} else {
 			select -= 1;
 			categoryName = categoryList.get(select);
-			mallController.setMemberLoginID("MemberItem");		
+			mallController.setNextMenu("MemberItem");
 		}
 		return false;
 	}

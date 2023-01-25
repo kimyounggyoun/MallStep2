@@ -16,7 +16,7 @@ public class MemberItem implements MenuCommand {
 	private String categoryName;
 	private MallController mallController;
 	private CartDAO cartDAO;
-	
+
 	@Override
 	public void init() {
 		itemDAO = ItemDAO.getInstance();
@@ -27,21 +27,19 @@ public class MemberItem implements MenuCommand {
 
 	@Override
 	public boolean update() {
-		ArrayList<Item> itemList = 
-				itemDAO.getCategoryItemList(categoryName);
+		ArrayList<Item> itemList = itemDAO.getCategoryItemList(categoryName);
 		System.out.println("===[" + categoryName + "]===");
 		itemDAO.printOneCategoryItemList(itemList);
 		int itemSize = itemList.size();
 		System.out.println("[0.카테고리]");
 		int select = _Main.scan.nextInt();
 		if (select == 0) {
-			mallController.setMemberLoginID("MemberShop");			
-		}
-		else if(select < 0 || select > itemSize){
+			mallController.setNextMenu("MemberShop");
+		} else if (select < 0 || select > itemSize) {
 			System.out.println("[잘못된 번호입니다]");
-			return true;	
-		}else {
-			select -= 1;	
+			return true;
+		} else {
+			select -= 1;
 			Item item = itemList.get(select);
 			Cart cart = new Cart();
 			cart.setNumber(cartDAO.getCartNumber());
@@ -53,6 +51,11 @@ public class MemberItem implements MenuCommand {
 			return true;
 		}
 		return false;
+	}
+
+	public void printOneCartList() {
+		ArrayList<Cart> onCartList = cartDAO.getOneCartList(mallController.getMemberLoginID());
+		cartDAO.printOneCartList(onCartList);
 	}
 
 }

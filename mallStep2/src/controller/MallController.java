@@ -1,4 +1,5 @@
 package controller;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,19 +18,22 @@ import menu_member.MemberCart;
 import menu_member.MemberItem;
 import menu_member.MemberMain;
 import menu_member.MemberShop;
+
 public class MallController {
-	private MallController() {}
-	static private MallController instance = 
-			new MallController();
+	private MallController() {
+	}
+
+	static private MallController instance = new MallController();
+
 	static public MallController getInstance() {
 		return instance;
 	}
-	
+
 	private String nextMenu;
-	private String memberLoginID;	
+	private String memberLoginID;
 	private MenuCommand menuCommand;
 	private Map<String, MenuCommand> mapContoller;
-			
+
 	public String getMemberLoginID() {
 		return memberLoginID;
 	}
@@ -42,40 +46,41 @@ public class MallController {
 		this.nextMenu = nextMenu;
 	}
 
-	public void init() {	
+	public void init() {
 		MemberDAO.getInstance().init();
 		ItemDAO.getInstance().init();
 		CartDAO.getInstance().init();
-		
+
 		mapContoller = new HashMap<String, MenuCommand>();
-		mapContoller.put("MallMain" , new MallMain());
-		mapContoller.put("MallJoin" , new MallJoin());
-		mapContoller.put("MallLogin" , new MallLogin());
-		
-		mapContoller.put("AdminMain" , new AdminMain());
-		mapContoller.put("AdminItem" , new AdminItem());
-		mapContoller.put("AdminMember" , new AdminMember());
-		mapContoller.put("AdminAddItem" , new AdminAddItem());
-		
-		mapContoller.put("MemberMain" , new MemberMain());
-		mapContoller.put("MemberShop" , new MemberShop());
-		mapContoller.put("MemberItem" , new MemberItem());
-		mapContoller.put("MemberCart" , new MemberCart());
-		
+		mapContoller.put("MallMain", new MallMain());
+		mapContoller.put("MallJoin", new MallJoin());
+		mapContoller.put("MallLogin", new MallLogin());
+
+		mapContoller.put("AdminMain", new AdminMain());
+		mapContoller.put("AdminItem", new AdminItem());
+		mapContoller.put("AdminMember", new AdminMember());
+		mapContoller.put("AdminAddItem", new AdminAddItem());
+
+		mapContoller.put("MemberMain", new MemberMain());
+		mapContoller.put("MemberShop", new MemberShop());
+		mapContoller.put("MemberItem", new MemberItem());
+		mapContoller.put("MemberCart", new MemberCart());
+
 		menuCommand = mapContoller.get("MallMain");
 		menuCommand.init();
 		update();
 	}
-	public void update() {	
-		while(true) {			
-			if(menuCommand.update() == false) {
-				if(nextMenu != null) {
+
+	public void update() {
+		while (true) {
+			if (menuCommand.update() == false) {
+				if (nextMenu != null) {
 					menuCommand = mapContoller.get(nextMenu);
 					menuCommand.init();
-				}else {
+				} else {
 					break;
 				}
-			}			
+			}
 		}
 	}
 }
