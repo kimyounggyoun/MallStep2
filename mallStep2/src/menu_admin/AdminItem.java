@@ -5,9 +5,10 @@ import _mall._Main;
 import controller.MallController;
 import item.ItemDAO;
 
-public class AdminItem implements MenuCommand{
+public class AdminItem implements MenuCommand {
 	private ItemDAO itemDAO;
 	private MallController mallController;
+
 	@Override
 	public void init() {
 		mallController = MallController.getInstance();
@@ -15,21 +16,21 @@ public class AdminItem implements MenuCommand{
 	}
 
 	@Override
-	public boolean update() {	
+	public boolean update() {
 		System.out.println("=== 아이템 관리자 ===");
 		itemDAO.printItemList();
 		System.out.println("[1.아이템추가 ] [2.아이템삭제] [0.관리자메인]");
 		int select = _Main.scan.nextInt();
-		if(select == 0) {
+		if (select == 0) {
 			mallController.setNextMenu("AdminMain");
-		}else if(select == 1) {
+		} else if (select == 1) {
 			mallController.setNextMenu("AdminAddItem");
-		}else if(select == 2) {		
+		} else if (select == 2) {
 			System.out.println("[직접하기]");
-		}else {
+		} else {
 			return true;
 		}
-		
+
 		return false;
 	}
 

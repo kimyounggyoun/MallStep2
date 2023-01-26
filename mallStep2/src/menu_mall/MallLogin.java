@@ -5,14 +5,16 @@ import _mall._Main;
 import controller.MallController;
 import member.MemberDAO;
 
-public class MallLogin implements MenuCommand{	
+public class MallLogin implements MenuCommand {
 	private MallController mallController;
-	private MemberDAO memberDAO;	
+	private MemberDAO memberDAO;
+
 	@Override
 	public void init() {
 		mallController = MallController.getInstance();
-		memberDAO = MemberDAO.getInstance();		
+		memberDAO = MemberDAO.getInstance();
 	}
+
 	@Override
 	public boolean update() {
 		System.out.println("===[ 로그인 ]===");
@@ -21,20 +23,20 @@ public class MallLogin implements MenuCommand{
 		System.out.println("[로그인] 비밀번호 입력 : ");
 		String pw = _Main.scan.next();
 		boolean check = memberDAO.checkMemberLogin(id, pw);
-		if(check == true) {
-			System.out.println("["+id+" 로그인 성공]");
-			if(id.equals("admin")) {
+		if (check == true) {
+			System.out.println("[" + id + " 로그인 성공]");
+			if (id.equals("admin")) {
 				mallController.setMemberLoginID(id);
 				mallController.setNextMenu("AdminMain");
-			}else {
+			} else {
 				mallController.setMemberLoginID(id);
 				mallController.setNextMenu("MemberMain");
 			}
-		}else {
+		} else {
 			System.out.println("[로그인 실패]");
 			mallController.setMemberLoginID(null);
 			mallController.setNextMenu("MallMain");
-			
+
 		}
 		return false;
 	}

@@ -24,9 +24,9 @@ public class AdminCart implements MenuCommand {
 		int select = _Main.scan.nextInt();
 		if (select == 0) {
 			mallController.setMemberLoginID("AdminMain");
-		}else if(select == 1){
+		} else if (select == 1) {
 			System.out.println("[직접하기]");
-		}else {
+		} else {
 			return true;
 		}
 		return false;
