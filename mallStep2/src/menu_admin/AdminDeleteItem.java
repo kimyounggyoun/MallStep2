@@ -18,9 +18,6 @@ public class AdminDeleteItem implements MenuCommand {
 
 	@Override
 	public boolean update() {
-		System.out.println("[아이템삭제] 카테고리 입력 : ");
-		String categoryName = _Main.scan.next();
-
 		System.out.println("[아이템삭제] 아이템이름 입력 :  ");
 		String itemName = _Main.scan.next();
 		boolean check = itemDAO.checkItemName(itemName);
