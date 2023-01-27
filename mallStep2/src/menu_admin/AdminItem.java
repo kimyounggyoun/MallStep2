@@ -26,7 +26,7 @@ public class AdminItem implements MenuCommand {
 		} else if (select == 1) {
 			mallController.setNextMenu("AdminAddItem");
 		} else if (select == 2) {
-			System.out.println("[직접하기]");
+			mallController.setNextMenu("AdminDeleteItem");
 		} else {
 			return true;
 		}

@@ -8,6 +8,8 @@ import cart.CartDAO;
 import item.ItemDAO;
 import member.MemberDAO;
 import menu_admin.AdminAddItem;
+import menu_admin.AdminCart;
+import menu_admin.AdminDeleteItem;
 import menu_admin.AdminItem;
 import menu_admin.AdminMain;
 import menu_admin.AdminMember;
@@ -18,6 +20,7 @@ import menu_member.MemberCart;
 import menu_member.MemberItem;
 import menu_member.MemberMain;
 import menu_member.MemberShop;
+import menu_member.MemberUpdate;
 
 public class MallController {
 	private MallController() {
@@ -60,11 +63,15 @@ public class MallController {
 		mapContoller.put("AdminItem", new AdminItem());
 		mapContoller.put("AdminMember", new AdminMember());
 		mapContoller.put("AdminAddItem", new AdminAddItem());
+		mapContoller.put("AdminCart", new AdminCart());
+		mapContoller.put("AdminDeleteItem", new AdminDeleteItem());
 
 		mapContoller.put("MemberMain", new MemberMain());
 		mapContoller.put("MemberShop", new MemberShop());
 		mapContoller.put("MemberItem", new MemberItem());
 		mapContoller.put("MemberCart", new MemberCart());
+		mapContoller.put("MemberUpdate", new MemberUpdate());
+		
 
 		menuCommand = mapContoller.get("MallMain");
 		menuCommand.init();

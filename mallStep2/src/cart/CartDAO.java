@@ -18,6 +18,15 @@ public class CartDAO {
 	public void init() {
 		cartList = new ArrayList<Cart>();
 		cartNumber = 1000;
+		setSampleData();
+	}
+
+	public ArrayList<Cart> getCartList() {
+		return cartList;
+	}
+
+	public void setCartList(ArrayList<Cart> cartList) {
+		this.cartList = cartList;
 	}
 
 	public int getCartNumber() {
@@ -45,6 +54,30 @@ public class CartDAO {
 		}
 	}
 
+	public void printAllCartList() {
+		printOneCartList(cartList);
+		// TODO Auto-generated method stub
+	}
 
+	public void cartListUpdate(int idx, int price) {
+		cartList.get(idx).setItemPrice(price);
+	}
+
+	public void cartListUpdate(int idx) {
+		cartList.remove(idx);
+	}
+
+	public void setSampleData() {
+		Cart temp = new Cart(1001, "a", "새우깡", 1500); // 업데이트하면 1000으로 변경될 부분
+		cartList.add(temp);
+		temp = new Cart(1003, "b", "감자깡", 1500);
+		cartList.add(temp);
+		temp = new Cart(1002, "a", "콜라", 2000);
+		cartList.add(temp);
+		temp = new Cart(1004, "b", "환타", 1500); // 업데이트하면 삭제될 목록
+		cartList.add(temp);
+		cartNumber += 4;
+
+	}
 
 }

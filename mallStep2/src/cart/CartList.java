@@ -13,8 +13,8 @@ public class CartList {
 	
 	
 	public void printAllCartList() {
-		for (int i = 0; i < cartList.size(); i++) {
-			System.out.println(i + 1 + ")" + cartList.get(i));
-		}
+//		for (int i = 0; i < cartList.size(); i++) {
+//			System.out.println(i + 1 + ")" + cartList.get(i));
+//		}
 	}
 }
