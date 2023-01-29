@@ -57,7 +57,7 @@ public class MemberDAO {
 	}
 
 	public String printOneMemberData(String memberID) {
-		for (int i = 0; i < memberList.size() - 1; i++) {
+		for (int i = 0; i < memberList.size(); i++) {
 			if (memberList.get(i).getMemberID().equals(memberID)) {
 				System.out.printf("회원번호 : %d \n", memberList.get(i).getMemberNumber());
 				System.out.printf("아 이 디 : %s \n", memberList.get(i).getMemberID());
@@ -66,6 +66,7 @@ public class MemberDAO {
 				return i + "";
 			}
 		}
+		System.out.println(" ㄴㄴ");
 		return "";
 	}
 

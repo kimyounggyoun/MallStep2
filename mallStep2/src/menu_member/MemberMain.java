@@ -24,7 +24,7 @@ public class MemberMain implements MenuCommand {
 		} else if (select == 2) {
 			mallController.setNextMenu("MemberCart");
 		} else if (select == 3) {
-			System.out.println("[직접하기]");
+			mallController.setNextMenu("BoardMain");
 		} else if (select == 4) {
 			mallController.setNextMenu("MemberUpdate");
 		} else {

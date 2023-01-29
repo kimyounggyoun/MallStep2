@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import _mall.MenuCommand;
+import board.BoardDAO;
 import cart.CartDAO;
 import item.ItemDAO;
 import member.MemberDAO;
@@ -13,6 +14,8 @@ import menu_admin.AdminDeleteItem;
 import menu_admin.AdminItem;
 import menu_admin.AdminMain;
 import menu_admin.AdminMember;
+import menu_board.BoardMain;
+import menu_board.BoardMainText;
 import menu_mall.MallJoin;
 import menu_mall.MallLogin;
 import menu_mall.MallMain;
@@ -53,6 +56,7 @@ public class MallController {
 		MemberDAO.getInstance().init();
 		ItemDAO.getInstance().init();
 		CartDAO.getInstance().init();
+		BoardDAO.getInstance().init();
 
 		mapContoller = new HashMap<String, MenuCommand>();
 		mapContoller.put("MallMain", new MallMain());
@@ -71,7 +75,8 @@ public class MallController {
 		mapContoller.put("MemberItem", new MemberItem());
 		mapContoller.put("MemberCart", new MemberCart());
 		mapContoller.put("MemberUpdate", new MemberUpdate());
-		
+		mapContoller.put("BoardMain", new BoardMain());
+		mapContoller.put("BoardMainText", new BoardMainText());
 
 		menuCommand = mapContoller.get("MallMain");
 		menuCommand.init();

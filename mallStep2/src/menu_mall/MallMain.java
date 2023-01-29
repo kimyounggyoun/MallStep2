@@ -6,9 +6,11 @@ import controller.MallController;
 
 public class MallMain implements MenuCommand {
 	private MallController mallController;
+
 	public void init() {
 		mallController = MallController.getInstance();
 	}
+
 	@Override
 	public boolean update() {
 		System.out.println("=== ºÓ«Œ∏Ù ===");
@@ -16,13 +18,14 @@ public class MallMain implements MenuCommand {
 		int select = _Main.scan.nextInt();
 		if (select == 0) {
 			System.out.println("[¡æ∑·]");
+			mallController.setNextMenu(null);
 			return false;
 		}
-		if (select == 1) {	
+		if (select == 1) {
 			mallController.setNextMenu("MallLogin");
-		}else if (select == 2) {
+		} else if (select == 2) {
 			mallController.setNextMenu("MallJoin");
-		}else {
+		} else {
 			return true;
 		}
 		return false;
