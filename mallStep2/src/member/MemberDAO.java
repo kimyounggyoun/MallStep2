@@ -27,6 +27,10 @@ public class MemberDAO {
 		memberList.add(member);
 	}
 
+	public ArrayList<Member> getMemberList() {
+		return memberList;
+	}
+
 	public int getNextNumber() {
 		memberNumber += 1;
 		return memberNumber;
@@ -72,6 +76,7 @@ public class MemberDAO {
 
 	public void passUpdate(String pw, int idx) {
 		memberList.get(idx).setMemberPW(pw);
+
 	}
 
 	public String printOneMemberData(int memberNumber) {

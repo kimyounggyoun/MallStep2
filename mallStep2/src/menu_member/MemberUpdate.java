@@ -25,8 +25,16 @@ public class MemberUpdate implements MenuCommand {
 			mallController.setNextMenu("MemberMain");
 		} else if (select == 1) {
 			System.out.println("변경하실 비밀번호를 입력해주세요 : ");
-			memberDAO.passUpdate(_Main.scan.next(), idx);
-			System.out.println("비밀번호가 변경되었습니다.");
+			String newPw = _Main.scan.next();
+			if (memberDAO.getMemberList().get(idx).getMemberPW().equals(newPw)) {
+				System.out.println("기존 비밀번호와 동일합니다.");
+				
+			} else {
+				memberDAO.passUpdate(newPw, idx);
+				System.out.println("비밀번호가 변경되었습니다.");
+
+			}
+
 		} else {
 			return true;
 		}
