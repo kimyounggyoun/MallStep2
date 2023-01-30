@@ -86,15 +86,16 @@ public class CartDAO {
 		if (cnt < ItemCount || cnt == 0 || ItemCount == 0) {
 			return -1;
 		} else {
-			for (int i = 0; i < cartList.size(); i++) {
-				if (cnt == 0) {
+			System.out.println("cnt : " + cnt);
+			System.out.println("item : "+ItemCount);
+			for (int i = cartList.size()-1; i >= 0; i--) {
+				if (ItemCount == 0) {
 					break;
 				}
 				if (cartList.get(i).getMemberID().equals(memberLoginID)
 						&& cartList.get(i).getItemName().equals(itemName)) {
 					cartList.remove(i);
-					cnt--;
-					i--;
+					ItemCount--;
 				}
 
 			}

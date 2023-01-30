@@ -19,9 +19,10 @@ public class BoardMain implements MenuCommand {
 	public boolean update() {
 		while (true) {
 			System.out.println("===[ 게시판 ]===");
+			boardDAO.printPage();
 			System.out.printf("총게시글수 : %d / 페이지 %d/%d \n", boardDAO.getCount(), boardDAO.getCurPageNum(),
 					boardDAO.getPageCount());
-			boardDAO.printPage();
+
 			System.out.println("[1.이전페이지] [2.다음페이지] [3.게시글작성] [4.본문보기] [0.뒤로가기]");
 			int sel = _Main.scan.nextInt();
 			if (sel == 0) {
