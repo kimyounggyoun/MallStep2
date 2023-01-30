@@ -87,14 +87,16 @@ public class CartDAO {
 			return -1;
 		} else {
 			for (int i = 0; i < cartList.size(); i++) {
+				if (cnt == 0) {
+					break;
+				}
 				if (cartList.get(i).getMemberID().equals(memberLoginID)
 						&& cartList.get(i).getItemName().equals(itemName)) {
 					cartList.remove(i);
 					cnt--;
+					i--;
 				}
-				if (cnt == 0) {
-					break;
-				}
+
 			}
 		}
 		return 0;
